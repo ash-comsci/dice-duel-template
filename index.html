@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dice Duel</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; background: #f4f4f4; color: #222; }
+  h1 { margin: 0 0 12px; font-size: 22px; }
+  .buttons { margin-bottom: 12px; }
+  button { font-size: 16px; padding: 8px 18px; margin-right: 8px; cursor: pointer; }
+  .layout { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+  canvas { background: #fff; border: 1px solid #bbb; }
+  #output { width: 360px; min-height: 400px; margin: 0; padding: 10px; background: #1e1e1e; color: #e6e6e6;
+            font: 14px/1.4 Consolas, monospace; white-space: pre-wrap; overflow-y: auto; }
+</style>
+</head>
+<body>
+<h1>Dice Duel</h1>
+<div class="buttons">
+  <button id="run">Run</button>
+  <button id="reset">Reset</button>
+</div>
+<div class="layout">
+  <canvas id="game" width="400" height="400"></canvas>
+  <pre id="output"></pre>
+</div>
+
+<!-- Do not change anything below this line. Write your code in program.js. -->
+<script>
+  // Copy console.log / println output onto the page, like the CodeHS console.
+  (function () {
+    const out = document.getElementById("output");
+    const realLog = console.log.bind(console);
+    console.log = function (...args) {
+      realLog(...args);
+      if (typeof args[0] === "string" && args[0].startsWith("%c")) return; // library banner
+      if (args.length === 2 && args[1] === "\n") {
+        out.textContent += args[0] + "\n";       // println(...)
+      } else if (args.length === 1 && typeof args[0] === "string" && /\s$/.test(args[0])) {
+        out.textContent += args[0];              // readLine/readInt question; answer follows on the same line
+      } else {
+        out.textContent += args.join(" ") + "\n"; // console.log(...)
+      }
+      out.scrollTop = out.scrollHeight;
+    };
+  })();
+</script>
+<!-- CodeHS JavaScript library (chs-js-lib 0.3.5, ISC licence): Circle, Rectangle, Text, add, Randomizer, readInt, ... -->
+<script src="lib/chs.iife.min.js"></script>
+<script>
+  document.getElementById("run").onclick = function () {
+    this.disabled = true;
+    const s = document.createElement("script");
+    s.src = "program.js?t=" + Date.now();
+    document.body.appendChild(s);
+  };
+  document.getElementById("reset").onclick = function () { location.reload(); };
+</script>
+</body>
+</html>
