@@ -43,24 +43,6 @@ Your program's output shows in the black box beside the canvas, like the CodeHS 
 
 **Total: 20 marks**
 
-## Useful CodeHS commands
-
-```javascript
-let name = readLine("What is your name? ");
-let rounds = readInt("How many rounds? ");
-let roll = Randomizer.nextInt(1, 6);
-
-let box = new Rectangle(80, 80);       // width, height
-box.setPosition(50, 100);              // top-left corner
-box.setColor(Color.blue);
-add(box);
-
-let label = new Text("6", "30pt Arial");
-label.setPosition(75, 155);            // bottom-left of the text
-label.setColor(Color.white);
-add(label);
-```
-
 ## Submitting
 
 Your work is submitted every time you push to GitHub.
